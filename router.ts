@@ -13,6 +13,8 @@ router.get('/ts', (req, res) => {
 
 router.get('/digimons', DigimonsController.getAll);
 router.get('/digimons/:id', DigimonsController.get);
+router.get('/digimons/name/:name', DigimonsController.getName);
+router.get('/digimons/type/:type', DigimonsController.getByType);
 
 router.post("/", (req, res) => {
     console.log("Cuerpo:", req.body);
