@@ -22,6 +22,7 @@ router.get('/pokemons/:id', PokemonController.get);
 router.get('/pokemons/name/:name', PokemonController.getName);
 router.get('/pokemons/type/:type', PokemonController.getByType);
 router.get('/pokemons/against/:name', PokemonController.getAgainst);
+router.get('/pokemons/newpokemon/:name', PokemonController.getNewPokemon);
 
 router.post("/", (req, res) => {
     console.log("Cuerpo:", req.body);

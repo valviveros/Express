@@ -49,3 +49,13 @@ export function getAgainst(req: Request, res: Response) {
         res.status(400).send(error);
     }
 }
+
+export function getNewPokemon(req: Request, res: Response) {
+    try {
+        const name = req.params.name && req.params.name;
+        const pokemons = PokemonService.getNewPokemon(name);
+        res.status(200).json(pokemons);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+}

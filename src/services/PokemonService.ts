@@ -93,6 +93,15 @@ module PokemonService {
             return pokemon;
         }
     }
+    export function getNewPokemon(name: string): Array<PokemonI> {
+        console.log("entre en newpokemon");
+        const pokemons: Array<PokemonI> = db;
+        let pokemonNew = [];
+        pokemonNew.push(name);
+        var splitted = name.split(",");
+
+        throw "Nombre: "+splitted[0]+ " Tipo: " +splitted[1]+ " Es fuerte contra: " +splitted[2]+ " Es débil contra: " +splitted[3]+ " Img: " + splitted[4];
+    }
 }
 
 export default PokemonService;
