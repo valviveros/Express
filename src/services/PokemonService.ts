@@ -18,8 +18,9 @@ module PokemonService {
     export function getName(name: string): Array<PokemonI> {
         const pokemons: Array<PokemonI> = db;
         const matches: Array<PokemonI> = pokemons.filter(function (el) {
-            console.log(name.normalize('NFD').replace(/[\u00C0-\u00FF]/g, ''));
-            return el.name.toLowerCase().indexOf(name.toLowerCase()) > -1 ;
+            const pokeName = name.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            const comparationName = el.name.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            return comparationName.toLowerCase().indexOf(pokeName.toLowerCase()) > -1;
         })
         if (matches.length < 1) {
             throw "No se encontró el pokemon"
@@ -31,7 +32,10 @@ module PokemonService {
         let matches: Array<PokemonI> = [];
         pokemons.forEach(pokemon => {
             const found = pokemon.type.filter(function (el) {
-                return el.name.toLowerCase().indexOf(type.toLowerCase()) > -1;
+                const pokeType = type.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+                const comparationName = el.name.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+                console.log(pokeType,comparationName);
+                return comparationName.toLowerCase().indexOf(pokeType.toLowerCase()) > -1;
             })
 
             if (found.length > 0) {
@@ -49,25 +53,27 @@ module PokemonService {
         let matchesStrong: Array<PokemonI> = [];
         let matchesWeak: Array<PokemonI> = [];
         let pokemon: Array<PokemonI> = pokemons.filter(function (el) {
-            return el.name.toLowerCase().indexOf(name.toLowerCase()) > -1;
+            const pokeName = name.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            const comparationName = el.name.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            return comparationName.toLowerCase().indexOf(pokeName.toLowerCase()) > -1;
         })
 
         if (pokemon.length < 1) {
             throw "No se encontró el pokemon"
         } else {
-            pokemon = pokemon.filter(function(el) {
+            pokemon = pokemon.filter(function (el) {
                 const nombre = el.name;
-                const status = el.type.filter(e =>{                    
+                const status = el.type.filter(e => {
                     let tipo = e.name;
                     pokemons.forEach(pokemon => {
                         const comparation = pokemon.type.filter(z => {
-                            for (let i = 0; i < z.weakAgainst.length; i ++) {
+                            for (let i = 0; i < z.weakAgainst.length; i++) {
                                 const element = z.weakAgainst[i];
                                 if (element.toString() == tipo) {
                                     matchesStrong.push(pokemon);
                                 }
                             }
-                            for (let j = 0; j < z.strongAgainst.length; j ++) {
+                            for (let j = 0; j < z.strongAgainst.length; j++) {
                                 const element = z.strongAgainst[j];
                                 if (element.toString() == tipo) {
                                     matchesWeak.push(pokemon);
@@ -79,10 +85,10 @@ module PokemonService {
                         const nameStrong = name.name;
                         matchesWeak.filter(name => {
                             const nameWeak = name.name;
-                            throw "Nombre: " + nombre + " Tipo: " + e.name  + " Es fuerte contra: " + nameStrong + " Es débil contra: " + nameWeak;
+                            throw "Nombre: " + nombre + " Tipo: " + e.name + " Es fuerte contra: " + nameStrong + " Es débil contra: " + nameWeak;
                         })
                     })
-                }) 
+                })
             });
             return pokemon;
         }
