@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "name": "Pikachu",
+        "type": [
+            { "name": "Eléctrico", "strongAgainst": ["Volador", "Agua"], "weakAgainst": ["Tierra", "Planta", "Eléctrico", "Dragón"] }
+        ],
+        "img": "https://static.wikia.nocookie.net/pokemon/images/0/0d/025Pikachu.png/revision/latest/scale-to-width-down/700?cb=20200620223403"
+    },
+    {
+        "id": 2,
+        "name": "Ivysaur",
+        "type": [
+            { "name": "Agua", "strongAgainst": ["Tierra", "Roca", "Fuego"], "weakAgainst": ["Agua", "Planta", "Dragón"] }
+        ],
+        "img": "https://static.wikia.nocookie.net/pokemon/images/7/73/002Ivysaur.png/revision/latest/scale-to-width-down/700?cb=20140328190847"
+    },
+    {
+        "id": 3,
+        "name": "Charmeleon",
+        "type": [
+            { "name": "Fuego", "strongAgainst": ["Bicho", "Acero", "Planta", "Hielo"], "weakAgainst": ["Roca", "Fuego", "Agua", "Dragón"] }
+        ],
+        "img": "https://static.wikia.nocookie.net/pokemon/images/4/4a/005Charmeleon.png/revision/latest/scale-to-width-down/700?cb=20140328191309"
+    },
+    {
+        "id": 4,
+        "name": "Golem",
+        "type": [
+            { "name": "Tierra", "strongAgainst": ["Veneno", "Roca", "Acero", "Fuego", "Eléctrico"], "weakAgainst": ["Volador", "Bicho", "Planta"] }
+        ],
+        "img": "https://static.wikia.nocookie.net/pokemon/images/f/f2/076Golem.png/revision/latest/scale-to-width-down/700?cb=20140328203941"
+    }
+]
